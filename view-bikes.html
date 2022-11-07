@@ -1,0 +1,59 @@
+<!-- view bikes page will display list of bikes the list will depend on the type of account viewing it, if its normal then it will
+     show the bikes linked to that account, if its a police account it'll show a list of every stolen bike -->
+<!DOCTYPE html>
+<html lang="en">
+<!-- Create the head tags in which the title and link tags are written -->
+<head>
+    <!-- Specifies the characterset being used and other metadata about the page such as the width and scale, this
+         is all automatically imported when creating the HTML file in VSCode -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Create the title for the page which will be displayed in the tab header -->
+    <title>View bikes</title>
+    <!-- This connects the main css file to this HTML page, therefore handling all the styling for this page -->
+    <link rel="stylesheet" href="resources/css/main.css">
+    <!-- Imported from Google Fonts in order to use the Open Sans font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+    <!-- Import the jquery script so that jquery functions can be used -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="shortcut icon" href="#">
+</head>
+<!-- This is where the contents of the page is written -->
+<body>
+    <!-- Create a div element to act as the navigation hotbar for users and assign it relevant classes (for styling) -->
+    <div class="nav__bar user__nav__bar">
+        <!-- Add all the different options and specify where they should redirect to when clicked -->
+        <a class="nav__active" href="view-bikes.html">Bikes</a>
+        <a href="register-bike.html">Register a bike</a>
+        <a href="heatmap.html">Theft heatmap</a>
+        <!-- Log-out option should call the logout() function rather than redirecting somewhere -->
+        <a href="javascript:logout()">Log-out</a>
+    </div>
+    <!-- Create a div element to act as the navigation hotbar for police and assign it relevant classes (for styling) -->
+    <div class="nav__bar police__nav__bar form--hidden">
+        <!-- Add all the different options and specify where they should redirect to when clicked -->
+        <a class="nav__active" href="view-bikes.html">Bikes</a>
+        <a href="register-bike.html">Theft heatmap</a>
+        <!-- Log-out option should call the logout() function rather than redirecting somewhere -->
+        <a href="javascript:logout()">Log-out</a>
+    </div>
+    <!-- Create a div element to act as the navigation hotbar for admins and assign it relevant classes (for styling) -->
+    <div class="nav__bar admin__nav__bar form--hidden">
+        <!-- Add all the different options and specify where they should redirect to when clicked -->
+        <a class="nav__active" href="view-bikes.html">Bikes</a>
+        <a href="heatmap.html">Theft heatmap</a>
+        <a href="register-police.html">Create police account</a>
+        <!-- Log-out option should call the logout() function rather than redirecting somewhere -->
+        <a href="javascript:logout()">Log-out</a>
+    </div>
+    <!-- Create a div and give it the "scroll__container" class (css file will make this element scrollable) and give it an
+         id so it can be accessed in javascript. The bike panels will be appended to this element through javascript code -->
+    <div class="scroll__container" id="viewBikesContainer">
+        <div id="bike__buffer"></div>
+    </div>
+    <!-- Link the javascript file to this page -->
+    <script src="./main.js"></script>
+</body>
+</html>

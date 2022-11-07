@@ -1,0 +1,70 @@
+<!-- Create the initial HTML tags in which everything is written and specify english as the language of the page -->
+<!DOCTYPE html>
+<html lang="en">
+<!-- Create the head tags in which the title and link tags are written -->
+<head>
+    <!-- Specifies the characterset being used and other metadata about the page such as the width and scale, this
+         is all automatically imported when creating the HTML file in VSCode -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Create the title for the page which will be displayed in the tab header -->
+    <title>Report a stolen bicycle</title>
+    <!-- This connects the main css file to this HTML page, therefore handling all the styling for this page -->
+    <link rel="stylesheet" href="resources/css/main.css">
+    <!-- Import the google maps script so that google maps functions can be used -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>	
+    <!-- Import the jquery script so that jquery functions can be used -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+</head>
+<!-- This is where the contents of the page is written -->
+<body>
+    <!-- Create a div element to act as the navigation hotbar for users and assign it relevant classes (for styling) -->
+    <div class="nav__bar user__nav__bar">
+        <!-- Add all the different options and specify where they should redirect to when clicked -->
+        <a href="view-bikes.html">Bikes</a>
+        <a href="register-bike.html">Register a bike</a>
+        <a href="heatmap.html">Theft heatmap</a>
+        <!-- Log-out option should call the logout() function rather than redirecting somewhere -->
+        <a href="javascript:logout()">Log-out</a>
+    </div>
+    <!-- Create a div element to act as the navigation hotbar for police officers and assign it relevant classes (for styling) -->
+    <div class="nav__bar police__nav__bar form--hidden">
+        <!-- Add all the different options and specify where they should redirect to when clicked -->
+        <a href="view-bikes.html">Bikes</a>
+        <a href="heatmap.html">Theft heatmap</a>
+        <!-- Log-out option should call the logout() function rather than redirecting somewhere -->
+        <a href="javascript:logout()">Log-out</a>
+    </div>
+    <!-- Create a div element to act as the navigation hotbar for admins and assign it relevant classes (for styling) -->
+    <div class="nav__bar admin__nav__bar form--hidden">
+        <!-- Add all the different options and specify where they should redirect to when clicked -->
+        <a href="view-bikes.html">Bikes</a>
+        <a href="heatmap.html">Theft heatmap</a>
+        <a href="register-police.html">Create police account</a>
+        <!-- Log-out option should call the logout() function rather than redirecting somewhere -->
+        <a href="javascript:logout()">Log-out</a>
+    </div>
+    <!-- Create a container to UI elements for this page -->
+    <div class="container">
+        <!-- Create a form (this is where location data will be gathered from the user) -->
+        <form class="form" id="reportStolenForm">
+            <!-- Create a title element displaying the purpose of the form -->
+            <h1 class="form__title">Report your stolen bike</h1>
+            <!-- Ask the user to input where their bike was stolen via the Google Maps pointer -->
+            <h4>Where was your bike stolen / last seen?</h4>
+            <!-- Make an input group class div for formatting purposes -->
+            <div class="form__input-group"></div>
+                <!-- Create a div element and set it's width and height, the map object will be placed on this -->
+                <div id="report__map" style="width: 360px; height: 300px;"></div>
+                <!-- Line break -->
+                <br />
+                <!-- Create a button that will submit the form data to the database via javascript -->
+                <button type="submit" class="form__button" id="report__submit__btn">Report</button>
+            </div>
+        </form>
+    </div>
+    <!-- Link the javascript file to this page -->
+    <script src="./main.js"></script>
+</body>
+</html>

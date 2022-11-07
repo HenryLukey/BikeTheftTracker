@@ -1,0 +1,331 @@
+body{
+    /* Defining the variables that'll be used later on, they will be referenced multiple times so easier to give them names
+       rather than writing out complex colour codes multiple times, it also means these values can be changed once here and
+       will update across the whole stylesheet. The American spelling of "color" is used for the sake of consistency with
+       the built-in attributes in CSS, HTML, and Javascript */
+    --color-primary: #009579;
+    --colour-primary-dark: #007f67;
+    --color-secondary: #252c6a;
+    --color-error: #cc3333;
+    --color-success: #4bb544;
+    --border-radius: 4px;
+
+    /* Set margin to 0 so theres no edges */
+    margin: 0;
+    /* Set the height of the page to 100% of the users viewport */
+    height: 100vh;
+    /* Makes the boxes for content flexible */
+    display: flex;
+    
+    /* Centers elements within the flex container */
+    align-items: center;
+    justify-content: center;
+
+    /* Specifies the default fontsize */
+    font-size: 9px;
+    /* Sets the background to the darkened image of Gloucestershire, which is stored within the images folder inside the 
+       resources folder */
+    background: url(../images/background.jpg);
+    /* Makes the background cover the entire page */
+    background-size: cover;
+    /* Specifies the font to use, Open Sans can be used because it was imported in the HTML file */
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Formats container elements */
+.container{
+    /* Set the width to be 400 pixels */
+    width: 360px;
+    max-width: 360px;
+    /* 1rem is equal to 1 unit of the base fontsize, 2rem will be double this  */
+    margin: 1rem;
+    padding: 2rem;
+    /* Sets the background to be white */
+    background: #ffffff;
+}
+
+/* Sets the font for the container, form__input and form__button classes, 500 refers to the boldness of the font */
+.container,
+.form__input,
+.form__button {
+    font: 500 1rem "Open Sans", sans-serif;
+}
+
+/* If an element has the "form--hidden" class then it is not displayed, this is how the log-in and create account forms
+   are swapped between */
+.form--hidden{
+    display: none;
+}
+
+/* Fixes the margins at the top and bottom of the container elements */
+.form > *:first-child{
+    margin-top: 0;
+}
+.form > *:last-child{
+    margin-top: 0;
+}
+
+/* Creates a margin for the title and aligns the text to the center of the form */
+.form__title{
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Creates a margin for the form message element and alligns it to the center of the form */
+.form__message{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Associates the form__message--success class text with the --colour-success variable defined in the body earlier */
+.form__message--success{
+    color: var(--color-success)
+}
+
+/* Associates the form__message--error class text with the --colour-error variable defined in the body earlier */
+.form__message--error{
+    color: var(--color-error)
+}
+
+/* Creates a margin for all form__input-group elements */
+.form__input-group{
+    margin-bottom: 1rem;
+}
+
+/* Adds formatting for all of the input elements within the form */
+.form__input{
+    /* Specifies the display type being used */
+    display: block;
+    /* Sets the width to be 100% of the allowed space */
+    width: 100%;
+    /* Adds padding to the inputs */
+    padding: 0.75rem;
+    /* Ensures the sizing of the box is correct */
+    box-sizing: border-box;
+    /* Gives the input boxes rounded corners  */
+    border-radius: var(--border-radius);
+    /* Gives the boxes a thin white boreder */
+    border: 1px solid #ffffff;
+    /* Ensures there's no outline */
+    outline: none;
+    /* Sets the background to be a pale grey */
+    background: #eeeeee;
+    /* Adds a transition so that it takes 0.2 seconds for the colours of the box to change when its focused */
+    transition: background 0.2s, border-color 0.2s;
+}
+
+/* Applies formatting to the box when it's focused */
+.form__input:focus{
+    /* Sets the border colour to the previously determined primary colour */
+    border-color: var(--color-primary);
+    /* Makes the background white */
+    background: #ffffff;
+}
+
+/* Applies formatting to the form__input--error class which is associated with the form__input elements while
+   there is an issue with their values */
+.form__input--error{
+    /* Sets the text colour and border colour to be equal to the --color-error variable */
+    color: var(--color-error);
+    border-color: var(--color-error);
+}
+
+/* Formats the error message that's displayed below an input field if there's a problem with it */
+.form__input-error-message{
+    /* Gives the text a margin */
+    margin-top: 0.5rem;
+    /* Changes it's fontsize relative to the default size */
+    font-size: 0.85rem;
+    /* Makes the text colour equal the --color-error variable */
+    color: var(--color-error);
+}
+
+/* Formatting for the for__button class elements */
+.form__button{
+    /* Sets the width to be 100% of the allowed space */
+    width: 100%;
+    /* Adds padding for the horizonal and vertical values */
+    padding: 1rem 2rem;
+    /* Sets the text in the button to be bold */
+    font-weight: bold;
+    /* Increases the size of the font relative to the default size */
+    font-size: 1.1rem;
+    /* Makes the colour of the text whire */
+    color: #ffffff;
+    /* Ensures there's no border */
+    border: none;
+    /* Makes the corners of the buttons rounded */
+    border-radius: var(--border-radius);
+    /* Ensures theres no outline */
+    outline: none;
+    /* Turns the users cursor into the finger pointer symbol when they hover over the button */
+    cursor: pointer;
+    /* Sets the colour of the button to be the same as the --color-primary variable */
+    background: var(--color-primary);
+}
+
+/* Changes the colour of the button to be the --color-primary-dark value when the user hovers over it */
+.form__button:hover{
+    background: var(--colour-primary-dark);
+}
+
+/* Makes the button 2% smaller when the user presses it giving a "click" visual effect */
+.form__button:active{
+    transform: scale(0.98);
+}
+
+/* Centers the elements associated with the form__text class */
+.form__text{
+    text-align: center;
+}
+
+/* Makes the elements of the form__link class the secondary colour and removes their previous decoration, also changes the
+   cursor to a pointer when the user hovers over them */
+.form__link{
+    color: var(--color-secondary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Underlines the text of the form__link elements when the user hovers over them */
+.form__link:hover{
+    text-decoration: underline;
+}
+
+/* Sets the maximum height and width of images so they aren't too big for the page */
+.form__image{
+    max-width: 270px;
+    max-height: 153px;
+    padding: 0.3rem;
+}
+
+/* Formats the bike container panels so that the width and height are correct and there's a small amount of space between each one */
+.bike__container{
+    width: 900px;
+    max-width: 900px;
+    height: 165px;
+    /* 1rem is equal to 1 unit of the base fontsize, 2rem will be double this  */
+    margin: 0.25rem;
+    padding: 0.5rem;
+    /* Sets the background to be white */
+    background: #ffffff;
+}
+
+/* Make the scroll container able to scroll with the overflow property and set
+   its max height to 90% so there's room for the navigation hotbar */
+.scroll__container{
+    margin: auto;
+    max-height: 90%;
+    overflow: auto;
+}
+
+.report__button{
+    /* Adds padding for the horizonal and vertical values */
+    padding: 1rem 2rem;
+    /* Sets the text in the button to be bold */
+    font-weight: bold;
+    /* Increases the size of the font relative to the default size */
+    font-size: 1.1rem;
+    /* Makes the colour of the text whire */
+    color: #ffffff;
+    /* Ensures there's no border */
+    border: none;
+    /* Makes the corners of the buttons rounded */
+    border-radius: var(--border-radius);
+    /* Ensures theres no outline */
+    outline: none;
+    /* Turns the users cursor into the finger pointer symbol when they hover over the button */
+    cursor: pointer;
+    /* Sets the colour of the button to be the same as the --color-error variable */
+    background: var(--color-error);
+    float: right;
+}
+
+.update__button{
+    /* Adds padding for the horizonal and vertical values */
+    padding: 1rem 2rem;
+    /* Sets the text in the button to be bold */
+    font-weight: bold;
+    /* Increases the size of the font relative to the default size */
+    font-size: 1.1rem;
+    /* Makes the colour of the text whire */
+    color: #ffffff;
+    /* Ensures there's no border */
+    border: none;
+    /* Makes the corners of the buttons rounded */
+    border-radius: var(--border-radius);
+    /* Ensures theres no outline */
+    outline: none;
+    /* Turns the users cursor into the finger pointer symbol when they hover over the button */
+    cursor: pointer;
+    /* Sets the colour of the button to be the same as the --color-primary variable */
+    background: var(--color-primary);
+    float: right;
+}
+
+.inquiry__button{
+    /* Adds padding for the horizonal and vertical values */
+    padding: 1rem 2rem;
+    /* Sets the text in the button to be bold */
+    font-weight: bold;
+    /* Increases the size of the font relative to the default size */
+    font-size: 1.1rem;
+    /* Makes the colour of the text whire */
+    color: #ffffff;
+    /* Ensures there's no border */
+    border: none;
+    /* Makes the corners of the buttons rounded */
+    border-radius: var(--border-radius);
+    /* Ensures theres no outline */
+    outline: none;
+    /* Turns the users cursor into the finger pointer symbol when they hover over the button */
+    cursor: pointer;
+    /* Sets the colour of the button to be the same as the --color-primary variable */
+    background: var(--color-primary);
+    float: right;
+}
+
+/* Set the width of the panel text container so that it doesn't overflow onto the button */
+.panel__text__container{
+    width: 750px;
+}
+
+/* Set it so that the panel text will go down a line instead of just extending outwards to the right */
+.panel__text{
+    overflow-wrap: break-word;
+}
+
+.nav__bar{
+    /* Any elements that overflow become hidden */
+    overflow: hidden;
+    /* Set the background colour */
+    background-color: #333333;
+    /* Set the font size */
+    font-size: 20px;
+    /* Set the location of the nav bar to be at the top of the screen in the center */
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+/* Set the colour and positioning of each option within the navbar */
+.nav__bar a{
+    float: left;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5rem 0.85rem;
+    text-decoration: none;
+}
+
+/* Set the colour of the option when the user's mouse is over it */
+.nav__bar a:hover{
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+/* Set the colour of the option when the user is on that page */
+.nav__bar a.nav__active{
+    background-color: var(--colour-primary-dark);
+    color: #ffffff;
+}

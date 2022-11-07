@@ -1,0 +1,204 @@
+<!-- Create the initial HTML tags in which everything is written and specify english as the language of the page -->
+<!DOCTYPE html>
+<html lang="en">
+<!-- Create the head tags in which the title and link tags are written -->
+<head>
+    <!-- Specifies the characterset being used and other metadata about the page such as the width and scale, this
+         is all automatically imported when creating the HTML file in VSCode -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Create the title for the page which will be displayed in the tab header -->
+    <title>Register a bicycle</title>
+    <!-- This connects the main css file to this HTML page, therefore handling all the styling for this page -->
+    <link rel="stylesheet" href="resources/css/main.css">
+    <!-- Imported from Google Fonts in order to use the Open Sans font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+    <!-- Import the jquery script so that jquery functions can be used -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="shortcut icon" href="#">
+</head>
+<!-- This is where the contents of the page is written -->
+<body>
+    <!-- That hotbar that will be displayed is determined by the type of account that's logged in (using javascript) -->
+    <!-- Create a div element to act as the navigation hotbar for users and assign it relevant classes (for styling) -->
+    <div class="nav__bar user__nav__bar">
+        <!-- Add all the different options and specify where they should redirect to when clicked -->
+        <a href="view-bikes.html">Bikes</a>
+        <a class="nav__active" href="register-bike.html">Register a bike</a>
+        <a href="heatmap.html">Theft heatmap</a>
+        <!-- Log-out option should call the logout() function rather than redirecting somewhere -->
+        <a href="javascript:logout()">Log-out</a>
+    </div>
+    <!-- Create a div element to act as the navigation hotbar for police and assign it relevant classes (for styling) -->
+    <div class="nav__bar police__nav__bar form--hidden">
+        <!-- Add all the different options and specify where they should redirect to when clicked -->
+        <a href="view-bikes.html">Bikes</a>
+        <a href="heatmap.html">Theft heatmap</a>
+        <!-- Log-out option should call the logout() function rather than redirecting somewhere -->
+        <a href="javascript:logout()">Log-out</a>
+    </div>
+    <!-- Create a div element to act as the navigation hotbar for admins and assign it relevant classes (for styling) -->
+    <div class="nav__bar admin__nav__bar form--hidden">
+        <!-- Add all the different options and specify where they should redirect to when clicked -->
+        <a href="view-bikes.html">Bikes</a>
+        <a href="heatmap.html">Theft heatmap</a>
+        <a href="register-police.html">Create police account</a>
+        <!-- Log-out option should call the logout() function rather than redirecting somewhere -->
+        <a href="javascript:logout()">Log-out</a>
+    </div>
+    <!-- Create a container div to hold the bikeInfo form and have it display towards the left of the screen -->
+    <div class="container" style="float:left">
+        <!-- Create the form in which users will input the information about their bike -->
+        <form class="form" id="bikeInfo" enctype="multipart/form-data">
+            <!-- Add a title to display the purpose of the form -->
+            <h1 class="form__title">Bicycle information</h1>
+            <!-- The group for the MPN input and it's error message  -->
+            <div class="form__input-group">
+                <input type="text" class="form__input" name="mpn" id="infoMPN" autofocus placeholder="Manufacturer part number (MPN)">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the brand input and it's error message  -->
+            <div class="form__input-group">
+                <input type="text" class="form__input" name="brand" id="infoBrand" placeholder="Brand">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the model input and it's error message  -->
+            <div class="form__input-group">
+                <input type="text" class="form__input" name="model" id="infoModel" placeholder="Model">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the type input and it's error message -->
+            <div class="form__input-group">
+                <!-- Use a select tag for this input because users must choose from a list of predetermined options -->
+                <select class="form__input" name="type" id="infoType">
+                    <!-- Create the default option which will display what this input is for (and make it so it can't be chosen) -->
+                    <option selected="true" disabled="true" value="">Type</option>
+                    <!-- Assign all the other options and their respective values -->
+                    <option value="Road Bike">Road Bike</option>
+                    <option value="Mountain Bike">Mountain Bike</option>
+                    <option value="Touring Bike">Touring Bike</option>
+                    <option value="Folding Bike">Folding Bike</option>
+                    <option value="Track Bike">Track Bike</option>
+                    <option value="BMX">BMX</option>
+                    <option value="Recumbent Bike">Recumbent Bike</option>
+                    <option value="Cruiser">Cruiser</option>
+                    <option value="Hybrid">Hybrid</option>
+                    <option value="Cyclocross">Cyclocross</option>
+                    <option value="Electric">Electric</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the wheel size input and it's error message -->
+            <div class="form__input-group">
+                <input type="text" class="form__input" name="wheel_size" id="infoWheelSize" placeholder="Wheel size (inches)">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the colour input and it's error message -->
+            <div class="form__input-group">
+                <input type="text" class="form__input" name="colour" id="infoColour" placeholder="Colour">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the number of gears input and it's error message -->
+            <div class="form__input-group">
+                <input type="text" class="form__input" name="gears" id="infoGears" placeholder="Number of gears">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the brake type input and it's error message -->
+            <div class="form__input-group">
+                <!-- Use a select tag for this input because users must choose from a list of predetermined options -->
+                <select class="form__input" name="brakes" id="infoBrakes">
+                    <!-- Create the default option which will display what this input is for (and make it so it can't be chosen) -->
+                    <option selected="true" disabled="true" value="">Brake type</option>
+                    <!-- Assign all the other options and their respective values -->
+                    <option value="V-Brakes">v-Brakes</option>
+                    <option value="Cantilevers">Cantilevers</option>
+                    <option value="Caliper Brakes">Caliper Brakes</option>
+                    <option value="Disc Brakes">Disc Brakes</option>
+                    <option value="Unsure">Unsure</option>
+                </select>
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the suspension type input and it's error message -->
+            <div class="form__input-group">
+                <!-- Use a select tag for this input because users must choose from a list of predetermined options -->
+                <select class="form__input" name="suspension" id="infoSuspension">
+                    <!-- Create the default option which will display what this input is for (and make it so it can't be chosen) -->
+                    <option selected="true" disabled="true" value="">Suspension</option>
+                    <!-- Assign all the other options and their respective values -->
+                    <option value="Front">Front</option>
+                    <option value="Rear">Rear</option>
+                    <option value="Full">Full</option>
+                    <option value="None">None</option>
+                    <option value="Unsure">Unsure</option>
+                </select>
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the gender input and it's error message -->
+            <div class="form__input-group">
+                <!-- Use a select tag for this input because users must choose from a list of predetermined options -->
+                <select class="form__input" name="gender" id="infoGender">
+                    <!-- Create the default option which will display what this input is for (and make it so it can't be chosen) -->
+                    <option selected="true" disabled="true" value="">Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Unisex">Unisex</option>
+                </select>
+            </div>
+                <div class="form__input-error-message"></div>
+            <!-- The group for the age group input and it's error message -->
+            <div class="form__input-group">
+                <!-- Use a select tag for this input because users must choose from a list of predetermined options -->
+                <select class="form__input" name="age_group" id="infoAge">
+                    <!-- Create the default option which will display what this input is for (and make it so it can't be chosen) -->
+                    <option selected="true" disabled="true" value="">Age group</option>
+                    <!-- Assign all the other options and their respective values -->
+                    <option value="Adult">Adult</option>
+                    <option value="14-16">14-16</option>
+                    <option value="12-14">12-14</option>
+                    <option value="10-12">10-12</option>
+                    <option value="8-10">8-10</option>
+                    <option value="6-8">6-8</option>
+                    <option value="4-6">4-6</option>
+                    <option value="<4">&#60;4</option>
+                </select>
+                <div class="form__input-error-message"></div>
+            </div>
+        </form>
+    </div>
+    <!-- Create a container div to hold the bikeImages form -->
+    <div class="container">
+        <!-- Create the form in which users will upload the images of their bike -->
+        <form class="form" id="bikeImages" enctype="multipart/form-data">
+            <!-- A title explaining what the user needs to do on this form -->
+            <h1 class="form__title">Upload some images</h1>
+            <!-- Specify that only up to 3 images can be uploaded -->
+            <p class="form__text">(Maximum of 3)</p>
+            <!-- Group together the input and it's error message -->
+            <div class="form__input-group">
+                <!-- Create an input element of type file, the "accept" value is set to "image/*" so that only image file types can
+                     be uploaded, multiple is set to 3 so only up to 3 images can be selected, when files are uploaded using this,
+                     the imagesUploaded function in the javascript file is called -->
+                <input type="file" class="form__input" name="images[]" multiple="3" accept="image/*" onchange="imagesUploaded(this)">
+                <div class="form__input-error-message"></div>
+            </div>
+        </form>
+    </div>
+    <!-- Create a container div to hold the submit button form -->
+    <div class="container">
+        <!-- The form that holds the button -->
+        <form class="form" id="registerBike">
+            <!-- Title of this form -->
+            <h1 class="form__title">Register your bike</h1>
+            <!-- Error message that will be displayed if there's any problems -->
+            <div class="form__message form__message--error"></div>
+            <!-- Button that submits all the data from the other forms to the javascript code -->
+            <button class="form__button" type="submit">Register</button>
+        </form>
+    </div>
+    <!-- Link the javascript file to this page -->
+    <script src="./main.js"></script>
+</body>
+</html>

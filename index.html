@@ -1,0 +1,114 @@
+<!-- Create the initial HTML tags in which everything is written and specify english as the language of the page -->
+<!DOCTYPE html>
+<html lang="en">
+<!-- Create the head tags in which the title and link tags are written -->
+<head>
+    <!-- Specifies the characterset being used and other metadata about the page such as the width and scale, this
+         is all automatically imported when creating the HTML file in VSCode -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The title of the page is viewed in the tabs of the browser. GC stands for Gloucestershire Constabulary -->
+    <title>GC Bicycle Theft Tracking Site</title>
+    <!-- This connects the main css file to this HTML page, therefore handling all the styling for this page -->
+    <link rel="stylesheet" href="resources/css/main.css">
+    <!-- Imported from Google Fonts in order to use the Open Sans font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="shortcut icon" href="#">
+</head>
+
+<!-- This is where the contents of the page is written -->
+<body>
+    <!-- Creates a section in which all the other UI elements will be contained -->
+    <div class="container">
+        <!-- The form tag is used to specify user input is going to be collected here, it's given the id login
+             so the Javascript can distinguish this form from the create account form -->
+        <form class="form" id="login">
+            <!-- A heading 1 tag with the content "Log-in" h1 tags are displayed as big and bold, this appears at the top
+                 of the form. The class is used to specify what type of element this is, this way the css file can apply styling
+                 to all elements of a class at once, they can also be used by the Javascript -->
+            <h1 class="form__title">Log-in</h1>
+
+            <!-- This element currently doesn't display anything but can be referenced and changed by the Javascript file,
+                 it'll be used to display a message below the "log-in" title, if theres an error when attempting to log in -->
+            <div class="form__message form__message--error"></div>
+            <!-- Creates a container to hold the input field for the email value and it's associated error message -->
+            <div class="form__input-group">
+                <!-- Autofocus means the element will automatically be focused upon loading (the cursor will be inside the text
+                     box already), the placeholder value determines what text the box will display when the user hasn't typed
+                     anything. It's used here to show the user what data they need to input -->
+                <input type="text" class="form__input" name="email" autofocus placeholder="Email">
+                <!-- The error message, which by default has no value, this can be changed via Javascript -->
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The same as the previous form__input-group divider, but for the password value -->
+            <div class="form__input-group">
+                <!-- The input type here is "password" rather than "text", this means the data entered by the
+                     user will be displayed as dots rather than actual characters for the sake of security -->
+                <input type="password" name="password" class="form__input" placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- Creates a button below the input fields with the display value of "Log-in", the type is "submit" because it
+                 submits the input from the user -->
+            <button class="form__button" name="submit" type="submit">Log-in</button>
+            <!-- The <p> tags represent a paragraph, which has standard text -->
+            <p class="form__text">
+                <!-- This represents a line break to create space between the button and the text below -->
+                <br />
+                <!-- This is an anchor tag which represents a hyperlink, this is how the user navigates to the create account
+                     form. It could be argued a button should be used instead since it's actually displaying a different 
+                     form rather than navigating to a different page, however, it's being used here for the sake of appearance -->
+                <a class="form__link" href="./" id="linkCreateAccount">No account? Register here</a>
+            </p>
+        </form>
+
+        <!-- This form is largely the same as the previous one but contains different input fields, it also obviously has 
+             it's own unique id -->
+        <form class="form form--hidden" id="createAccount">
+            <!-- The title for this form -->
+            <h1 class="form__title">Create account</h1>
+            <!-- The error message for this form upon submission, which is also blank by default -->
+            <div class="form__message form__message--error"></div>
+            <!-- The group for the first name input and it's error message -->
+            <div class="form__input-group">
+                <input type="text" id="registerFirstname" name="first_name" class="form__input" autofocus placeholder="First name">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the last name input and it's error message  -->
+            <div class="form__input-group">
+                <input type="text" id="registerLastname" name="last_name" class="form__input" placeholder="Last name">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the email input and it's error message  -->
+            <div class="form__input-group">
+                <input type="text" id="registerEmail" name="email" class="form__input" placeholder="Email">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the password input and it's error message  -->
+            <div class="form__input-group">
+                <!-- Once again the "password" type is used for security reasons -->
+                <input type="password" id="registerPassword" name="password" class="form__input" placeholder="Password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The group for the password confirmation input and it's error message  -->
+            <div class="form__input-group">
+                <input type="password" id="registerConfirmPassword" class="form__input" placeholder="Confirm password">
+                <div class="form__input-error-message"></div>
+            </div>
+            <!-- The submission button for the register form -->
+            <button class="form__button" name="submit" type="submit">Register</button>
+            <!-- The hypertext link used to navigate to the log-in form -->
+            <p class="form__text">
+                <br />
+                <!-- An href value is required but it doesn't really matter what is entered here because it's overwritten
+                     in the Javascript file -->
+                <a class="form__link" href="./" id="linkLogin">Have an account? Log-in here</a>
+            </p>
+        </form>
+    </div>
+    <!-- Used to embed our javascript file into the page, which handles all the logic of the system -->
+    <script src="./main.js"></script>
+</body>
+</html>
